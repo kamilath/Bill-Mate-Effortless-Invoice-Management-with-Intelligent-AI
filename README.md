@@ -11,8 +11,6 @@ Search and Display: Users can search the database for specific invoices based on
 
 User Authentication: Basic login functionality is implemented for access to the application (credentials are hard-coded for now).
 # Prerequisites
-Before you begin, ensure you have the following installed on your machine:
-
 Python 3.x
 
 Flask
