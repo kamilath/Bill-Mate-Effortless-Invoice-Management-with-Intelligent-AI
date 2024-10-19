@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Display</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#E9F1FA;
+        }
+        h1 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Style for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            animation: fadeIn 0.5s ease; /* Add animation */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #ff6b6b;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+       
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+            animation: fadeInRow 0.5s ease; /* Add animation */
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+            animation: fadeInRow 0.5s ease; /* Add animation */
+        }
+        /* Alternate row colors */
+        tr:nth-child(odd) {
+            background-color: #0458B3;
+            color: white;
+            animation: fadeInRow 0.5s ease; /* Add animation */
+        }
+        /* Invoice date sorting */
+        .invoice-date-header::after {
+            content: "▼";
+            padding-left: 5px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .invoice-date-header.sorted::after {
+            content: "▲";
+            transform: rotate(180deg);
+        }
+        /* Responsive styles */
+        @media only screen and (max-width: 600px) {
+            th, td {
+                padding: 8px;
+            }
+        }
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInRow {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Table Display</h1>
+    <!-- Display the table here -->
+    {{ html_table | safe }}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

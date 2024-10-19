@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            background-color: #E9F1FA;
+            /*background: url('bg.svg') no-repeat center center;*/
+            background-size: cover;
+        }
+        .name-logo {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            left: 10px; /* Adjust as needed */
+        }
+
+        .name-logo img {
+            max-width: 190px; /* Adjust size as needed */
+            max-height: 130px; /* Adjust size as needed */
+        }
+
+        .image-container {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInUp 3s ease-in-out;
+            margin-left: 100px;
+        }
+
+        .image-container img {
+            max-height: 80vh;
+        }
+
+        .container {
+            margin-bottom: 50px;
+            width: 50%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 3s ease-in-out;
+            margin-right: 5%;
+        }
+
+        h1, h2, p {
+            color: black; /* Changed text color to black */
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .head-form {
+            max-width: 300px;
+            background-color: #0458B3; /* Changed background color to #0458B3 */
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            height: 450px;
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 50px; /* Reduce the gap between the image and this container */
+        }
+
+        .login-form {
+            background-color: #ffffff;
+            border-radius: 2%;
+            height: 300px;
+            width: 250px;
+            margin: 0 auto;
+            padding: 25px;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 15px;
+            background-color: #4ffff3;
+            box-sizing: border-box;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            background-color: #e0e0e0;
+        }
+
+        button[type="submit"] {
+            background-color:#0458B3 ;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            animation: pulse 2s infinite; /* Add pulse animation */
+            border: none;
+        }
+        
+        
+        button[type="submit"]:hover {
+            background-color:#ff6b6b ;
+            transform: scale(1); 
+            box-shadow: 0 0 10px rgb(0, 0, 0); 
+        }
+
+        .bottom-text {
+            margin-top: 20px;
+            color: #000000;
+            font-size: 14px;
+        }
+
+        .bottom-text a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+
+        .ai-icon {
+            display: inline-block;
+            border-radius: 20px;
+            width: 180px;
+            height: 180px;
+            
+            position: relative;
+        }
+        .ai-icon img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="name-logo">
+        <img src="{{url_for('static', filename="/Image/Name.svg")}}" alt="Name Logo">
+
+    </div>
+    <div class="image-container">
+        <img src="{{url_for('static', filename="/Image/bott.svg")}}" alt="Bot Image" />
+    </div>
+    <div class="container">
+        <div class="head-form">
+                 <img src="{{url_for('static', filename="/Image/Billmate2.png")}}" alt="logobot" 
+                style="height: 90px; width: 100px;"/>
+            <div class="login-form"><br>
+                <form action="/home" method="post">
+                    <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+                    <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+                    <button type="submit">Login</button>
+                </form>
+                <p class="bottom-text">Don't have an account? <a href="#">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

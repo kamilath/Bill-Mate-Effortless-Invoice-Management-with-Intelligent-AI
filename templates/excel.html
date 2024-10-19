@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Responses</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: #E9F1FA;
+            /*background: url('bg.svg') no-repeat center center fixed;*/
+            background-size: cover;
+        }
+        .name-logo {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            left: 10px; /* Adjust as needed */
+        }
 
+        .name-logo img {
+            max-width: 190px; /* Adjust size as needed */
+            max-height: 130px; /* Adjust size as needed */
+        }
+        .back-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color:#0458B3 ;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #ff6b6b;
+            transform: scale(1);
+            font-size: medium;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .search-container {
+            animation: fadeIn 2s ease-in-out;
+            background-color: #0458B3;
+            padding: 20px;
+            border-radius: 10px;
+            width: 600px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px; /* Space between search container and results */
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            color: white;
+            flex: 1;
+        }
+
+        .form-group input[type="text"] {
+            flex: 3;
+            padding: 10px;
+            margin-left: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ff6b6b;
+            color: white;
+            margin-bottom: 20px; /* Space between submit button and results */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff6b6b;
+            transform: scale(1); 
+            color:rgb(255, 255, 255);
+            font-weight: bold;
+            box-shadow: 0 0 10px rgb(255, 255, 255);
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-bottom: 20px; /* Space between table and clear/search buttons */
+        }
+
+        th, td {
+            border: 1px solid #b2bec3;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color:#0458B3;
+            color: #fff;
+        }
+        h1{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="name-logo">
+        <img src="{{url_for('static', filename="/Image/Name.svg")}}" alt="Name Logo">
+    </div>
+    <a href="/hm" class="back-button">&#9664;Back to Home</a>
+
+    <h1>Invoice Search</h1>
+    <div class="search-container">
+        
+        <form action="{{ url_for('display_responses') }}" method="POST">
+            <div class="form-group">
+                <label for="vendor_name">Vendor Name:</label>
+                <input type="text" id="vendor_name" name="vendor_name" placeholder="Enter vendor name...">
+            </div>
+            <div class="form-group">
+                <label for="invoice_number">Invoice Number:</label>
+                <input type="text" id="invoice_number" name="invoice_number" placeholder="Enter invoice number...">
+            </div>
+            <div class="form-group">
+                <label for="invoice_date">Invoice Date:</label>
+                <input type="text" id="invoice_date" name="invoice_date" placeholder="Enter invoice date...">
+            </div>
+            <div class="form-group">
+                <label for="invoice_amount">Invoice Amount:</label>
+                <input type="text" id="invoice_amount" name="invoice_amount" placeholder="Enter invoice amount...">
+            </div><h1></h1>
+          <center>  <input type="submit" value="Search"></center>  
+        </form>
+    </div>
+{% if search_results %}
+        <h2>Search Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Vendor Name</th>
+                    <th>Invoice Number</th>
+                    <th>Invoice Date</th>
+                    <th>Invoice Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(search_results.invoice_count) %}
+                    <tr>
+                        <td>{{ search_results.vendor_name[i] }}</td>
+                        <td>{{ search_results.invoice_numbers[i] }}</td>
+                        <td>{{ search_results.invoice_dates[i] }}</td>
+                        <td>{{ search_results.invoice_amounts[i] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h3 style="text-align: center;">No data found for the search criteria,<a href="{{ url_for('display_responses') }}">Search again</a>.</h3>
+    {% endif %}
+
+    <!-- Clear Search Button -->
+    <div class="clear-button">
+        <form action="{{ url_for('clear_search') }}" method="POST">
+            <input type="submit" value="Clear Search" >
+        </form>
+</body>
+</html>

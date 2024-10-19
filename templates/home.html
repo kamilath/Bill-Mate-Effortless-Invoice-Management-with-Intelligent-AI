@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E9F1FA;
+            /*background-image: url('bg.svg');*/
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative; /* Added position relative */
+        }
+        .name-logo {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            left: 10px; /* Adjust as needed */
+        }
+
+        .name-logo img {
+            max-width: 190px; /* Adjust size as needed */
+            max-height: 130px; /* Adjust size as needed */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            flex: 1;
+        }
+
+        h3{
+            position: absolute;
+            top: 32px; /* Adjust as needed */
+            left: 10px; /* Adjust as needed */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: black;
+            
+        }
+
+        p {
+            position: relative;
+            margin-top: 10px; /* Adjusted from 50px */
+            text-align: justify;
+            color: white;
+            font-size: 18px;
+            max-width: 600px;
+            line-height: 1.5;
+            
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            background-color: #ff6b6b;
+            border: 2px solid #ff6b6b;
+            border-radius: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .btn i {
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: #ee5253;
+            border-color: #ee5253;
+            transform: translateY(-2px);
+            background-color: #ff6b6b;
+            transform: scale(1);
+            box-shadow: 0 0 10px rgb(0, 0, 0);
+        }
+
+       
+
+        .btn-description {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover .btn-description {
+            opacity: 1;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 36px; /*font size for headings */
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            color: black; /* Heading color */
+        }
+
+        .section p {
+            font-size: 20px; /*font size for paragraphs */
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-family: 'Open Sans', sans-serif;
+            color: black; /* Paragraph text color */
+        }
+
+        .section ul {
+            list-style-type: disc;
+            margin-left: 20px; 
+        }
+
+        .section ul li {
+            font-size: 18px; /*font size for list items */
+            line-height: 1.6;
+            margin-bottom: 5px;
+            font-family: 'Open Sans', sans-serif; 
+            color: black; /* List item text color */
+        }
+
+        .section .highlight {
+            font-weight: bold; /* Bold font weight for highlighted text */
+            color: #ff6b6b; /* Highlight color */
+        }
+        
+
+        /* Footer styles */
+        .footer-content {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .footer-link {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-link p {
+            margin: 5px 0;
+        }
+
+        /* Additional styles for sections */
+        .sections {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .sections h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .sections ul {
+            text-align: left;
+            padding-left: 0;
+            list-style-type: none;
+        }
+
+        .sections ul li {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="name-logo">
+        <img src="{{url_for('static', filename="/Image/Name.svg")}}" alt="Name Logo">
+        
+    </div><br>
+    <h3>Your Key to Easy Invoice Management</h3>
+    <div class="container"><br>
+        <div class="section">
+            <p style="font-size:xx-large; font-weight: bolder; text-align: center;">Welcome aboard!</p>
+            <p>At our platform, Your invoices are in good hands within our secure platform. We're here to ensure efficiency and peace of mind as we optimize your financial records effortlessly.</p>
+        </div>
+        <div class="section btn-container">
+            <a href="/index" class="btn"><i class="fas fa-upload"></i> Upload</a>
+            <span class="btn-description">Upload your invoices securely.</span>
+            <a href="/display_responses" class="btn"><i class="fas fa-search"></i> Search</a>
+            <span class="btn-description">Search for specific invoices.</span>
+            <a href="/table" class="btn"><i class="fas fa-database"></i> Database</a>
+            <span class="btn-description">Access your invoice database.</span>
+        </div>
+        <div class="sections">
+            <h2>With our service, you can:</h2>
+            <ul>
+                <li>&#8611 &nbsp Securely <b>Upload</b> invoices to our platform.</li>
+                <li>&#8611 &nbsp Easily <b>Search</b> and retrieve specific invoices.</li>
+                <li>&#8611 &nbsp Access your invoice <b>Database</b> anytime, anywhere.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Footer Content -->
+    <div class="footer-content">
+        <div class="footer-link">
+            <p>Contact us</p>
+            <p>askbillmate@gmail.com</p>
+        </div>
+        <div class="footer-link">
+            <p >About us</p>
+            <p>Billmate Ltd &#169</p>
+        </div>
+        <div class="footer-link">
+            <p>Feedback</p>
+            <p>⭐⭐⭐⭐⭐</p>
+        </div>
+    </div>
+     
+    <img src="{{url_for('static', filename="/Image/Border.svg")}}" alt="Border" style="position: fixed; top: 0; right: 0; height: 300px; z-index: -1;">
+    <img src="{{url_for('static', filename="/Image/Border2.svg")}}" alt="Border" style="position: fixed; bottom: 0; left: 0; height: 300px; z-index: -1;">
+</body>
+</html>

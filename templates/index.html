@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Invoice</title>
+    <style>
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px); /* Initial position */
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0); /* Final position */
+            }
+        }
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px); /* Initial position */
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0); /* Final position */
+            }
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: #E9F1FA;
+            /*background: url('bg.svg') no-repeat center center fixed;*/
+            background-size: cover;
+        }
+        .name-logo {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            left: 10px; /* Adjust as needed */
+        }
+
+        .name-logo img {
+            max-width: 190px; /* Adjust size as needed */
+            max-height: 130px; /* Adjust size as needed */
+        }
+        .back-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color:#0458B3 ;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #ff6b6b;
+            transform: scale(1);
+            font-size: medium;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            padding-top: 5vh; 
+        }
+        .bot-image {
+            position: absolute;
+            animation: fadeInLeft 2s ease-in-out forwards;
+            left: 20px; /* Adjust left position as needed */
+            top: calc(50% - 225px);
+            transform: translateY(-50%);
+            height: 600px;
+            width: 600px;
+        }
+
+
+        h1{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        h4{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        p {
+            font-size: 1em;
+            color: #000;
+            margin-top: 0.5em;
+            text-align: start;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .form-container { 
+            padding: 20px;
+            background: #0458B3;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInRight 2s ease-in-out;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            width: 200px;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color:#ff6b6b;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff6b6b;
+            transform: scale(1); 
+            color:rgb(255, 255, 255);
+            font-weight: bold;
+            box-shadow: 0 0 10px rgb(255, 255, 255); 
+        }
+
+        .image-preview {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            transition: transform 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="name-logo">
+        <img src="{{url_for('static', filename="/Image/Name.svg")}}" alt="Name Logo">
+    </div>
+    <a href="/hm" class="back-button">&#9664;Back to Home</a>
+    <header>
+        <h1>Upload Invoice</h1><br>
+        <p>We've made it incredibly easy for you to upload your invoices securely and efficiently.</p>
+        <p>Whether you're dealing with <b>JPG, JPEG, PNG, or PDF files</b>, we support all kinds of file formats.</p> 
+        <p>Ensuring that you can seamlessly manage your invoices without any compatibility issues.</p><br>
+        <center><h4>Select your files by clicking here or just drag and drop them into this area</h4></center>
+    </header>
+    <img src="{{url_for('static', filename="/Image/bot2.svg")}}" class="bot-image" alt="Bot Image">
+    <br><div class="form-container">
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".jpg, .jpeg, .png, .pdf" onchange="previewImage(event)" required><br>
+            <center><input type="submit" value="Upload"></center>
+        </form>
+        <div class="image-preview" id="imagePreview">
+            <img id="selectedImage" alt="Image Preview">
+        </div>
+    </div>
+    <script>
+        
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('selectedImage');
+            const file = input.files[0];
+            const url = URL.createObjectURL(file);
+            preview.src = url;
+            preview.style.transform = 'scale(1)';
+        }
+
+        document.getElementById('selectedImage').addEventListener('wheel', function(event) {
+            event.preventDefault();
+            let scale = 1;
+            if (event.deltaY < 0) {
+                scale += 0.1;
+            } else {
+                scale -= 0.1;
+            }
+            if (scale < 0.1) scale = 0.1;
+            this.style.transform = `scale(${scale})`;
+        });
+    </script>
+</body>
+</html>
