@@ -10,7 +10,7 @@ Data Storage: Extracted information is stored in an SQLite database for easy acc
 Search and Display: Users can search the database for specific invoices based on various criteria like vendor name or invoice number and view the results in an HTML table format.
 
 User Authentication: Basic login functionality is implemented for access to the application (credentials are hard-coded for now).
-#Prerequisites
+# Prerequisites
 Before you begin, ensure you have the following installed on your machine:
 
 Python 3.x
