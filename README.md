@@ -21,11 +21,11 @@ This project is a Flask-based web application that processes invoices by uploadi
 
 - Google Generative AI SDK
 ## Usage
-- **Start the Flask Application**: python app.py
+**Start the Flask Application**: python app.py
 
-- **Access the Web Interface**: Open your browser and navigate to http://127.0.0.1:5000/.
+**Access the Web Interface**: Open your browser and navigate to http://127.0.0.1:5000/.
 
-- **Login** - Email: example@example.com, Password: password
+**Login** - Email: example@example.com, Password: password
 ## API and Libraries
 - **Flask**: Used for web routing and serving HTML templates.
 
