@@ -21,11 +21,11 @@ This project is a Flask-based web application that processes invoices by uploadi
 
 - Google Generative AI SDK
 ## Usage
-**1.Start the Flask Application**: python app.py
+**1. Start the Flask Application**: python app.py
 
-**2.Access the Web Interface**: Open your browser and navigate to http://127.0.0.1:5000/.
+**2. Access the Web Interface**: Open your browser and navigate to http://127.0.0.1:5000/.
 
-**3.Login** - Email: example@example.com, Password: password
+**3. Login** - Email: example@example.com, Password: password
 ## API and Libraries
 - **Flask**: Used for web routing and serving HTML templates.
 
@@ -37,18 +37,18 @@ This project is a Flask-based web application that processes invoices by uploadi
 
 - **Pandas**: For managing dataframes and converting data to HTML tables.
 ## How It Works
-**1.Image Upload**: The user uploads an invoice image
+**1. Image Upload**: The user uploads an invoice image
 
-**2.Gemini Model**: The application sends the image to Google’s Gemini model, which analyzes the invoice and extracts the vendor name, invoice number, date, and amount.
+**2. Gemini Model**: The application sends the image to Google’s Gemini model, which analyzes the invoice and extracts the vendor name, invoice number, date, and amount.
 
-**3.Database Insertion**: The extracted data is saved into an SQLite database.
+**3. Database Insertion**: The extracted data is saved into an SQLite database.
 
-**4.Search & Display**: The user can search for specific invoices or view all the invoices in a tabular format.
+**4. Search & Display**: The user can search for specific invoices or view all the invoices in a tabular format.
 ## Future Enhancements
-1.Implement dynamic user authentication and authorization using a proper user database.
+1. Implement dynamic user authentication and authorization using a proper user database.
 
-2.Add advanced filtering options for searching invoices.
+2. Add advanced filtering options for searching invoices.
 
-3.Implement pagination for large datasets.
+3. Implement pagination for large datasets.
 
-4.Deploy the app on a cloud platform (e.g., Heroku, AWS) for public access.
+4. Deploy the app on a cloud platform (e.g., Heroku, AWS) for public access.
