@@ -1,41 +1,41 @@
 # Bill Mate-Effortless Invoice Management with Intelligent AI 
 This project is a Flask-based web application that processes invoices by uploading image files, extracting key information (e.g., vendor name, invoice number, date, and amount) using Google's Gemini Vision AI model, and storing the extracted data in an SQLite database.
 ## Features
-**Invoice Image Upload**: Users can upload invoice images through the web interface.
+- **Invoice Image Upload**: Users can upload invoice images through the web interface.
 
-**AI-Powered Extraction**: The app uses Google Gemini's model to extract details like vendor name, invoice number, date, and amount from the uploaded invoice images.
+- **AI-Powered Extraction**: The app uses Google Gemini's model to extract details like vendor name, invoice number, date, and amount from the uploaded invoice images.
 
-**Data Storage**: Extracted information is stored in an SQLite database for easy access and retrieval.
+- **Data Storage**: Extracted information is stored in an SQLite database for easy access and retrieval.
 
-**Search and Display**: Users can search the database for specific invoices based on various criteria like vendor name or invoice number and view the results in an HTML table format.
+- **Search and Display**: Users can search the database for specific invoices based on various criteria like vendor name or invoice number and view the results in an HTML table format.
 
-**User Authentication**: Basic login functionality is implemented for access to the application (credentials are hard-coded for now).
+- **User Authentication**: Basic login functionality is implemented for access to the application (credentials are hard-coded for now).
 ## Prerequisites
-Python 3.x
+- Python 3.x
 
-Flask
+- Flask
 
-SQLite3
+- SQLite3
 
-PIL (Python Imaging Library)
+- PIL (Python Imaging Library)
 
-Google Generative AI SDK
+- Google Generative AI SDK
 ## Usage
-**Start the Flask Application**: python app.py
+- **Start the Flask Application**: python app.py
 
-**Access the Web Interface**: Open your browser and navigate to http://127.0.0.1:5000/.
+- **Access the Web Interface**: Open your browser and navigate to http://127.0.0.1:5000/.
 
-**Login** - Email: example@example.com, Password: password
+- **Login** - Email: example@example.com, Password: password
 ## API and Libraries
-**Flask**: Used for web routing and serving HTML templates.
+- **Flask**: Used for web routing and serving HTML templates.
 
-**Pillow (PIL)**: Used to process and resize images.
+- **Pillow (PIL)**: Used to process and resize images.
 
-**Google Generative AI (Gemini)**: API used to extract invoice details from images.
+- **Google Generative AI (Gemini)**: API used to extract invoice details from images.
 
-**SQLite**: Database used to store extracted invoice data.
+- **SQLite**: Database used to store extracted invoice data.
 
-**Pandas**: For managing dataframes and converting data to HTML tables.
+- **Pandas**: For managing dataframes and converting data to HTML tables.
 ## How It Works
 **Image Upload**: The user uploads an invoice image
 
