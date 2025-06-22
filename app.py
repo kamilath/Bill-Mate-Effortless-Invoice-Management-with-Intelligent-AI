@@ -7,7 +7,7 @@ import sqlite3
 import os
 
 app = Flask(__name__)
-genai.configure(api_key='AIzaSyAmHnVtZ1alxy_R6n1bbNTtQA0J1nkk8x0')
+genai.configure(api_key='')
 
 # Function to generate Gemini response
 def generate_gemini_response(input_prompt, image_loc, question_prompts):
